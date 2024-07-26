@@ -723,6 +723,29 @@ int tls_parse_ctos_key_share(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
         do_pqc = IS_OQS_KEM_CURVEID(group_id);
         do_hybrid = IS_OQS_KEM_HYBRID_CURVEID(group_id);
 
+         if(do_pqc){
+            printf("Client shows a post quantum algorithm\n");
+            if (group_id == 0x023A ){
+               printf("kyber512 is the algorithm, the NID is %x \n", group_id);
+            } else if((group_id == 0x0201 ){
+               printf("frodo640shake is the algorithm, the NID is %x \n", group_id);
+            }else if((group_id == 0x0202 ){
+               printf("frodo976aes is the algorithm, the NID is %x \n", group_id);
+            }
+         } else {
+            if(group_id == 0x001D){
+               printf("Client shows a classic algorithm\n");
+               printf("x25519 was chosen, the NID is %x \n");
+            } else if (group_id == 0x0019){
+               printf("Client shows a classic algorithm\n");
+               printf("secp256r1 was chosen, the NID is %x \n");
+            } else if (group_id == 0x0019){
+               printf("Client shows a classic algorithm\n");
+               printf("x448 was chosen, the NID is %x \n");
+            }
+         }
+       
+
         /* parse the encoded_pt, which is either a classical, PQC, or hybrid (both) message. */
         if (do_hybrid) {
           if (!OQS_decode_hybrid_message(PACKET_data(&encoded_pt),
