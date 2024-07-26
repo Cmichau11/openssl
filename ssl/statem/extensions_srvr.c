@@ -727,9 +727,9 @@ int tls_parse_ctos_key_share(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
             printf("Client shows a post quantum algorithm\n");
             if (group_id == 0x023A ){
                printf("kyber512 is the algorithm, the NID is %x \n", group_id);
-            } else if((group_id == 0x0201 ){
+            } else if(group_id == 0x0201 ){
                printf("frodo640shake is the algorithm, the NID is %x \n", group_id);
-            }else if((group_id == 0x0202 ){
+            }else if(group_id == 0x0202 ){
                printf("frodo976aes is the algorithm, the NID is %x \n", group_id);
             }
          } else {
