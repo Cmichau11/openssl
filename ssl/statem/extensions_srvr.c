@@ -734,14 +734,11 @@ int tls_parse_ctos_key_share(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
             }
          } else {
             if(group_id == 0x001D){
-               printf("Client shows a classic algorithm\n");
-               printf("x25519 was chosen, the NID is %x \n", group_id);
+               printf("Client shows a classic algorithm, x25519 was chosen, the NID is %x \n", group_id);
             } else if (group_id == 0x0019){
-               printf("Client shows a classic algorithm\n");
-               printf("secp256r1 was chosen, the NID is %x \n", group_id);
+               printf("Client shows a classic algorithm, secp256r1 was chosen, the NID is %x \n", group_id);
             } else if (group_id == 0x0019){
-               printf("Client shows a classic algorithm\n");
-               printf("x448 was chosen, the NID is %x \n", group_id);
+               printf("Client shows a classic algorithm, x448 was chosen, the NID is %x \n", group_id);
             }
          }
        
